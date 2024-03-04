@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import SignLog from './components/SignLogin';
+import ImageUpload from './components/ImageUpload';
+import FileDisplay from './components/FileDisplay';
+import Whiteboard from './components/Whiteboard';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+  const [predictions, setPredictions] = useState([]);
+
+  const handlePredictions = (newPredictions) => {
+    setPredictions(newPredictions);
+  };
+
+  const handleSignup = () => {
+    setAuthenticated(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!authenticated && <SignLog onSignup={handleSignup} />}
+      {authenticated && (
+        <div>
+          <FileDisplay predictions={predictions} />
+          <ImageUpload />
+          <Whiteboard />
+        </div>
+      )}
     </div>
   );
 }
