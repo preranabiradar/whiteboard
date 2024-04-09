@@ -1,0 +1,51 @@
+.whiteboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  canvas {
+    border: 1px solid #000;
+    width: 80vw; 
+    max-width: 800px;
+    height: 60vh; 
+    max-height: 600px; 
+  }
+  
+  .controls-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .color-picker,
+  .brush-size {
+    margin-right: 10px;
+  }
+  
+  .buttons-container {
+    margin-top: 10px;
+  }
+  
+  .buttons-container button {
+    margin-right: 5px;
+  }
+
+  @media (max-width: 768px) {
+    canvas {
+      width: 90vw; 
+      max-width: none;
+      height: 50vh; 
+      max-height: none;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    canvas {
+      width: 95vw; 
+      height: 40vh; 
+    }
+  }
+  

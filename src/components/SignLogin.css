@@ -1,0 +1,28 @@
+.container {
+    margin-top: 2rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .btn {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .col-md-6 {
+      max-width: 80%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .col-md-6 {
+      max-width: 90%;
+    }
+  }
+  

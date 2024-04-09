@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col,Alert } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 
-import Whiteboard from './Whiteboard';
-import ImageUpload from './ImageUpload';
-import FileDisplay from './FileDisplay';
+import Whiteboard from "./Whiteboard";
+import ImageUpload from "./ImageUpload";
+import FileDisplay from "./FileDisplay";
 
+import "./SignLogin.css";
 
-function SignLog ()  {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function SignLog() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isSignup, setIsSignup] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
-  const emailRegex = /\S+@\S+\.\S+/; 
+  const emailRegex = /\S+@\S+\.\S+/;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       if (!emailRegex.test(email)) {
-        throw new Error('Invalid email format');
+        throw new Error("Invalid email format");
       }
 
-  
       setAuthenticated(true);
-      setEmail('');
-      setPassword('');
+      setEmail("");
+      setPassword("");
     } catch (error) {
-      console.error('Authentication failed:', error.message);
+      console.error("Authentication failed:", error.message);
     }
   };
 
@@ -36,16 +36,18 @@ function SignLog ()  {
     return (
       <div>
         <FileDisplay />
-        <ImageUpload />  
+        <ImageUpload />
         <Whiteboard />
-    </div>
-    )
+      </div>
+    );
   }
   return (
     <Container>
       <Row className="justify-content-md-center mt-5">
         <Col md={6}>
-        <h2 className="text-center mb-4">{isSignup ? 'Sign Up' : 'Log In'}</h2>
+          <h2 className="text-center mb-4">
+            {isSignup ? "Sign Up" : "Log In"}
+          </h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email:</Form.Label>
@@ -68,21 +70,21 @@ function SignLog ()  {
               />
             </Form.Group>
             <Button variant="primary" type="submit" className="w-100">
-              {isSignup ? 'Sign Up' : 'Log In'}
+              {isSignup ? "Sign Up" : "Log In"}
             </Button>
           </Form>
           <p className="text-center mt-3">
             {isSignup
-              ? 'Already have an account?'
-              : "Don't have an account yet?"}{' '}
+              ? "Already have an account?"
+              : "Don't have an account yet?"}{" "}
             <Button variant="link" onClick={() => setIsSignup(!isSignup)}>
-              {isSignup ? 'Log In' : 'Sign Up'}
+              {isSignup ? "Log In" : "Sign Up"}
             </Button>
           </p>
         </Col>
       </Row>
     </Container>
   );
-};
+}
 
 export default SignLog;
